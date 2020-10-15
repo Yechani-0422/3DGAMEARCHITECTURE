@@ -765,8 +765,6 @@
     <ClInclude Include="include\GLFW\glfw3native.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="graphicLib.h" />
-    <ClInclude Include="renderObject.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="ICleanUp.h" />
@@ -777,6 +775,7 @@
     <ClInclude Include="NonRenderableObject.h" />
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Obj.h" />
+    <ClInclude Include="IUpdate.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1181,8 +1180,6 @@
     <None Include="glm\gtx\wrap.inl">
       <Filter>헤더 파일</Filter>
     </None>
-    <None Include="fs_w7.shader" />
-    <None Include="vs_w7.shader" />
     <None Include="vertex_data.csv">
       <Filter>소스 파일</Filter>
     </None>
@@ -1196,18 +1193,6 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="main_w7.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="20151687.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="graphicLib.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="renderObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="FileManager.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>

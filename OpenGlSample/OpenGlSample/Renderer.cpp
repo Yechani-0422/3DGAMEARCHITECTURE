@@ -3,13 +3,31 @@
 
 Renderer* Renderer::instance = 0;
 
-void Renderer::render(RenderableObject* obj)
+void Renderer::addObject(RenderableObject* obj)
+{
+	objList.push_back(obj);
+}
+
+void Renderer::update(IUpdate* obj)
 {
 
+}
+
+void Renderer::render()
+{
+	for (int i = 0; i < objList.size(); i++)
+	{
+		renderObject(objList[i]);
+	}
+	
+}
+
+void Renderer::renderObject(RenderableObject* obj)
+{
 	glUseProgram(obj->programID);
 
 	glActiveTexture(GL_TEXTURE0);
-	glBindTexture(GL_TEXTURE_2D, obj->Texture);		
+	glBindTexture(GL_TEXTURE_2D, obj->Texture);
 	glUniform1i(obj->textureID, 0);
 
 	glEnableVertexAttribArray(0);
@@ -26,7 +44,7 @@ void Renderer::render(RenderableObject* obj)
 		(void*)0
 	);
 
-	
+
 	// 2nd attribute buffer : UVs
 	glBindBuffer(GL_ARRAY_BUFFER, obj->uvbuffer);
 	glVertexAttribPointer(
@@ -48,8 +66,8 @@ void Renderer::render(RenderableObject* obj)
 		0,                                // stride
 		(void*)0                          // array buffer offset
 	);
-	
-	
+
+
 
 	glm::mat4 moveObjPos = glm::mat4(1.0f);
 	moveObjPos = glm::translate(moveObjPos, obj->objPos);

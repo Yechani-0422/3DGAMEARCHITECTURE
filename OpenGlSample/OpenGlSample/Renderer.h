@@ -2,6 +2,8 @@
 
 #include "FileManager.h"
 #include "ICleanUp.h"
+#include "IUpdate.h"
+#include <vector>
 
 class RenderableObject;
 
@@ -11,6 +13,10 @@ private:
 	glm::vec3 cameraPos;	
 
 	static Renderer* instance;
+	std::vector< RenderableObject*> objList;
+
+private:
+	void renderObject(RenderableObject* obj);
 public:
 	
 
@@ -24,7 +30,9 @@ public:
 		return instance;
 	};
 
-	void render(RenderableObject* obj);
+	void addObject(RenderableObject* obj);
+	void update(IUpdate* obj);
+	void render();
 	void setCameraPos(float x, float y, float z);
 	int init();
 	virtual void shutDown() override;

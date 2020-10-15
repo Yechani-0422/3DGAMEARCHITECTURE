@@ -19,6 +19,10 @@ int main(void)
 	FileManager::GetInstance()->loadingObj(cube, "cube.obj", "suntexture.DDS", "20151687_vs.shader", "20151687_fs.shader");
 	FileManager::GetInstance()->loadingObj(human, "suzanne.obj", "uvtemplate.DDS", "20151687_vs.shader", "20151687_fs.shader");
 	
+	Renderer::GetInstance()->addObject(cube);
+	Renderer::GetInstance()->addObject(human);
+	Renderer::GetInstance()->addObject(sphere);
+
 	cube->setPos(0, 0, 0);	
 	human->setPos(2, 0, 3);
 	sphere->setPos(2, 0, -4);
@@ -30,10 +34,9 @@ int main(void)
 	{
 		Renderer::GetInstance()->renderUp();
 
-		Renderer::GetInstance()->render(cube);
-		Renderer::GetInstance()->render(human);
-
-		Renderer::GetInstance()->render(sphere);
+		Renderer::GetInstance()->update(non);
+		Renderer::GetInstance()->render();
+		
 
 		Renderer::GetInstance()->renderDown();
 	}	
@@ -44,8 +47,11 @@ int main(void)
 	sphere->shutDown();
 	Renderer::GetInstance()->shutDown();
 
+	delete non;
+
 	delete cube;
 	delete human;
+	delete sphere;
 
 	return 0;
 }
