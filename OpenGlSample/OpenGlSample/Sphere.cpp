@@ -7,7 +7,7 @@ Sphere::Sphere()
 
 	MatrixID = glGetUniformLocation(programID, "MVP");
 
-	Texture = FileManager::GetInstance()->loadDDS("suntexture.DDS");
+	Texture = FileManager::GetInstance()->loadDDS("character.DDS");
 
 	textureID = glGetUniformLocation(programID, "myTextureSampler");
 
@@ -49,4 +49,14 @@ void Sphere::shutDown()
 	glDeleteProgram(MatrixID);
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
+}
+
+void Sphere::setMoving(bool IsCheck)
+{
+	_IsMoveCheck = IsCheck;
+}
+
+bool Sphere::getMoving()
+{
+	return _IsMoveCheck;
 }

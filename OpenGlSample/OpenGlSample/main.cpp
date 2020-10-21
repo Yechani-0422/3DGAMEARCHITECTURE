@@ -6,34 +6,40 @@
 #include "Sphere.h"
 #include "Obj.h"
 
+
+
+
+
 int main(void)
 {
 	Renderer::GetInstance()->init();
 
-	Obj* cube = new Obj();
-	Obj* human = new Obj();
+	Obj* mario = new Obj();
+	Obj* bg = new Obj();
 	NonRenderableObject* non = new NonRenderableObject();
 
 	RenderableObject* sphere = new Sphere();
 	
-	FileManager::GetInstance()->loadingObj(cube, "cube.obj", "suntexture.DDS", "20151687_vs.shader", "20151687_fs.shader");
-	FileManager::GetInstance()->loadingObj(human, "suzanne.obj", "uvtemplate.DDS", "20151687_vs.shader", "20151687_fs.shader");
+	FileManager::GetInstance()->loadingObj(mario, "cube.obj", "character.DDS", "20151687_vs.shader", "20151687_fs.shader");
+	FileManager::GetInstance()->loadingObj(bg, "bg.obj", "bgdds.DDS", "20151687_vs.shader", "20151687_fs.shader");
 	
-	Renderer::GetInstance()->addObject(cube);
-	Renderer::GetInstance()->addObject(human);
+	Renderer::GetInstance()->addObject(mario);
+	Renderer::GetInstance()->addObject(bg);
 	Renderer::GetInstance()->addObject(sphere);
 
-	cube->setPos(0, 0, 0);	
-	human->setPos(2, 0, 3);
-	sphere->setPos(2, 0, -4);
+	mario->setPos(0, 0, -20);
+	bg->setPos(0, 5, -51);
+	sphere->setPos(200, 0, -4);
+
+	mario->setMoving(true);
 
 	
-	Renderer::GetInstance()->setCameraPos(2, 0, 0);	
+	Renderer::GetInstance()->setCameraPos(0, 0, 0);	
 
-	while (true)
+	while (glfwGetKey(Renderer::GetInstance()->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(Renderer::GetInstance()->window) == 0)
 	{
 		Renderer::GetInstance()->renderUp();
-
+		 
 		Renderer::GetInstance()->update(non);
 		Renderer::GetInstance()->render();
 		
@@ -42,16 +48,18 @@ int main(void)
 	}	
 	
 
-	cube->shutDown();
-	human->shutDown();
+	mario->shutDown();
+	bg->shutDown();
 	sphere->shutDown();
 	Renderer::GetInstance()->shutDown();
 
 	delete non;
 
-	delete cube;
-	delete human;
+	delete mario;
+	delete bg;
 	delete sphere;
 
 	return 0;
 }
+
+

@@ -16,3 +16,18 @@
 //	glDeleteProgram(programID);
 //	glDeleteVertexArrays(1, &VertexArrayID);
 //}
+
+RenderableObject::RenderableObject()
+{
+	_IsMoveCheck = false;
+}
+
+void RenderableObject::setMoving(bool IsCheck)
+{
+	_IsMoveCheck = IsCheck;
+}
+
+bool RenderableObject::getMoving()
+{
+	return _IsMoveCheck;
+}

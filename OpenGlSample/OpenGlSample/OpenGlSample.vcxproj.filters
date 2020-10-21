@@ -776,6 +776,7 @@
     <ClInclude Include="Sphere.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="IUpdate.h" />
+    <ClInclude Include="KeyInput.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1212,6 +1213,9 @@
       <Filter>소스 파일</Filter>
     </ClCompile>
     <ClCompile Include="Obj.cpp">
+      <Filter>소스 파일</Filter>
+    </ClCompile>
+    <ClCompile Include="KeyInput.cpp">
       <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>

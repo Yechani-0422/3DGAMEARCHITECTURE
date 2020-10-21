@@ -4,9 +4,15 @@
 
 class RenderableObject :public Object
 {
+private:
+	bool _IsMoveCheck;
 public:
+	RenderableObject();
 	virtual void shutDown() override {};
 	virtual void setPos(float x, float y, float z) {};
+
+	virtual void setMoving(bool IsCheck);
+	virtual bool getMoving();
 
 	glm::vec3 objPos;
 	GLuint vertexbuffer;

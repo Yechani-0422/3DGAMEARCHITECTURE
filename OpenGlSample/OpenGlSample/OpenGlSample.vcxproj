@@ -369,6 +369,7 @@
     <ClInclude Include="include\GL\glxew.h" />
     <ClInclude Include="include\GL\wglew.h" />
     <ClInclude Include="IUpdate.h" />
+    <ClInclude Include="KeyInput.h" />
     <ClInclude Include="NonRenderableObject.h" />
     <ClInclude Include="Obj.h" />
     <ClInclude Include="Object.h" />
@@ -519,6 +520,7 @@
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="FileManager.cpp" />
+    <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NonRenderableObject.cpp" />
     <ClCompile Include="Obj.cpp" />

@@ -1,5 +1,6 @@
 #include "Renderer.h"
 #include "RenderableObject.h"
+#include "KeyInput.h"
 
 Renderer* Renderer::instance = 0;
 
@@ -25,6 +26,18 @@ void Renderer::render()
 void Renderer::renderObject(RenderableObject* obj)
 {
 	glUseProgram(obj->programID);
+	
+
+	KeyInput::GetInstance()->computeMatricesFromInputs();
+	
+	glm::mat4 ProjectionMatrix = KeyInput::GetInstance()->getProjectionMatrix();
+	glm::mat4 ViewMatrix = KeyInput::GetInstance()->getViewMatrix();
+	glm::mat4 ModelMatrix = glm::mat4(1.0);
+	//glm::mat4 MVP = ProjectionMatrix * ViewMatrix * ModelMatrix;
+
+	// Send our transformation to the currently bound shader, 
+	// in the "MVP" uniform
+	//glUniformMatrix4fv(obj->MatrixID, 1, GL_FALSE, &MVP[0][0]);
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, obj->Texture);
@@ -75,20 +88,45 @@ void Renderer::renderObject(RenderableObject* obj)
 	glm::mat4 moveCameraPos = glm::mat4(1.0f);
 	moveCameraPos = glm::translate(moveCameraPos, cameraPos);
 
+
 	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
 
+	glm::vec3 direction(
+		cos(0.0f) * sin(3.14f),
+		sin(0.0f),
+		cos(0.0f) * cos(3.14f)
+	);
 
+	glm::vec3 right = glm::vec3(
+		sin(3.14f - 3.14f / 2.0f),
+		0,
+		cos(3.14f - 3.14f / 2.0f)
+	);
+
+	glm::vec3 position = glm::vec3(0, 0, 5);
+
+	glm::vec3 up = glm::cross(right, direction);
 
 	glm::mat4 View = glm::lookAt(
-		glm::vec3(-5, 3, 5),
-		glm::vec3(0, 0, 0),
-		glm::vec3(0, 1, 0)
+		position,
+		position+direction,
+		up
 	);
 
 
 	glm::mat4 To_World = glm::mat4(1.0f);
 
-	glm::mat4 MVP = Projection * moveCameraPos * View * moveObjPos * To_World;
+	glm::mat4 MVP;
+
+	if (obj->getMoving() == true)
+	{
+		MVP = ProjectionMatrix * moveCameraPos * ViewMatrix * moveObjPos * ModelMatrix;
+	}
+	else
+	{
+		MVP = Projection * moveCameraPos * View * moveObjPos * To_World;
+	}
+	
 
 	glUniformMatrix4fv(obj->MatrixID, 1, GL_FALSE, &MVP[0][0]);
 	glDrawArrays(GL_TRIANGLES, 0, obj->vertices.size());
