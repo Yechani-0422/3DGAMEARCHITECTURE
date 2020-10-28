@@ -14,12 +14,8 @@ private:
 
 	static Renderer* instance;
 	std::vector< RenderableObject*> objList;
-
-private:
 	void renderObject(RenderableObject* obj);
 public:
-	
-
 	static Renderer* GetInstance()
 	{
 		if (instance == 0)

@@ -5,8 +5,7 @@
 #include "NonRenderableObject.h"
 #include "Sphere.h"
 #include "Obj.h"
-
-
+#include "Time.h"
 
 
 
@@ -39,12 +38,17 @@ int main(void)
 	while (glfwGetKey(Renderer::GetInstance()->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(Renderer::GetInstance()->window) == 0)
 	{
 		Renderer::GetInstance()->renderUp();
-		 
-		Renderer::GetInstance()->update(non);
+		
+		if (Time::GetInstance()->IsFixedRendering())
+		{
+			Renderer::GetInstance()->update(non);
+			Renderer::GetInstance()->update(mario);
+		}		
+
 		Renderer::GetInstance()->render();
 		
 
-		Renderer::GetInstance()->renderDown();
+		Renderer::GetInstance()->renderDown();		
 	}	
 	
 

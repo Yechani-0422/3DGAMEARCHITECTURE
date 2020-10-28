@@ -16,3 +16,8 @@ void Obj::shutDown()
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
 }
+
+void Obj::update()
+{
+
+}

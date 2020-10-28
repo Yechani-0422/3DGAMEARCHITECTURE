@@ -11,7 +11,7 @@ void Renderer::addObject(RenderableObject* obj)
 
 void Renderer::update(IUpdate* obj)
 {
-
+	obj->update();
 }
 
 void Renderer::render()
