@@ -8,13 +8,15 @@ private:
 	bool _IsMoveCheck;
 public:
 	RenderableObject();
+	virtual void init() override {};
+	virtual void render() override {};
+	virtual void update() override {};
 	virtual void shutDown() override {};
 	virtual void setPos(float x, float y, float z) {};
-
-	virtual void setMoving(bool IsCheck);
-	virtual bool getMoving();
+	virtual void setCameraPos(float x, float y, float z) {};
 
 	glm::vec3 objPos;
+	glm::vec3 cameraPos;
 	GLuint vertexbuffer;
 	GLuint uvbuffer;
 	GLuint normalbuffer;

@@ -14,12 +14,12 @@
 
 using namespace std;
 
-class Obj;
+class RenderableObject;
 class FileManager
 {
 public:
 	
-	void loadingObj(Obj* obj, const char* vertex_data, const char* texturename, const char* vs_shader, const char* fs_shader);
+	void loadingObj(RenderableObject* obj, const char* vertex_data, const char* texturename, const char* vs_shader, const char* fs_shader);
 	
 	GLuint loadDDS(const char* imagepath);
 	bool loadOBJ(const char* path,

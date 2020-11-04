@@ -7,7 +7,7 @@
 #include <algorithm>
 #include <sstream>
 #include <stdlib.h>
-#include "Obj.h"
+#include "RenderableObject.h"
 
 #define FOURCC_DXT1 0x31545844 // Equivalent to "DXT1" in ASCII
 #define FOURCC_DXT3 0x33545844 // Equivalent to "DXT3" in ASCII
@@ -309,7 +309,7 @@ GLuint FileManager::LoadShaders(const char* vertex_file_path, const char* fragme
 	return ProgramID;
 }
 
-void FileManager::loadingObj(Obj* obj, const char* objname, const char* texturename, const char* vs_shader, const char* fs_shader)
+void FileManager::loadingObj(RenderableObject* obj, const char* objname, const char* texturename, const char* vs_shader, const char* fs_shader)
 {
 	obj->programID = LoadShaders(vs_shader, fs_shader);
 

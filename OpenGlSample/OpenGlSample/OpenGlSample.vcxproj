@@ -116,6 +116,7 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClInclude Include="Bg.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="glm\common.hpp" />
     <ClInclude Include="glm\detail\compute_common.hpp" />
@@ -362,20 +363,23 @@
     <ClInclude Include="glm\vec4.hpp" />
     <ClInclude Include="glm\vector_relational.hpp" />
     <ClInclude Include="ICleanUp.h" />
+    <ClInclude Include="IInit.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\GL\eglew.h" />
     <ClInclude Include="include\GL\glew.h" />
     <ClInclude Include="include\GL\glxew.h" />
     <ClInclude Include="include\GL\wglew.h" />
+    <ClInclude Include="IRender.h" />
     <ClInclude Include="IUpdate.h" />
     <ClInclude Include="KeyInput.h" />
     <ClInclude Include="NonRenderableObject.h" />
-    <ClInclude Include="Obj.h" />
+    <ClInclude Include="Mario.h" />
     <ClInclude Include="Object.h" />
     <ClInclude Include="RenderableObject.h" />
     <ClInclude Include="Renderer.h" />
     <ClInclude Include="Sphere.h" />
+    <ClInclude Include="testNonRenderObj.h" />
     <ClInclude Include="Time.h" />
   </ItemGroup>
   <ItemGroup>
@@ -520,14 +524,16 @@
     <None Include="vertex_data2.csv" />
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bg.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="main.cpp" />
     <ClCompile Include="NonRenderableObject.cpp" />
-    <ClCompile Include="Obj.cpp" />
+    <ClCompile Include="Mario.cpp" />
     <ClCompile Include="RenderableObject.cpp" />
     <ClCompile Include="Renderer.cpp" />
     <ClCompile Include="Sphere.cpp" />
+    <ClCompile Include="testNonRenderObj.cpp" />
     <ClCompile Include="Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

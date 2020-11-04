@@ -13,6 +13,15 @@
       <UniqueIdentifier>{67DA6AB6-F800-4c08-8B7A-83BB121AAD01}</UniqueIdentifier>
       <Extensions>rc;ico;cur;bmp;dlg;rc2;rct;bin;rgs;gif;jpg;jpeg;jpe;resx;tiff;tif;png;wav;mfcribbon-ms</Extensions>
     </Filter>
+    <Filter Include="GameEngine">
+      <UniqueIdentifier>{0f977c04-250a-4b0f-b7da-fdfa5517a048}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\소스">
+      <UniqueIdentifier>{4c6a184a-1d34-4f45-b75f-7219bc2e9fc3}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="GameEngine\헤더">
+      <UniqueIdentifier>{5486c12e-f7bb-473e-873e-a01f85cccdec}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="glm\detail\_features.hpp">
@@ -765,19 +774,51 @@
     <ClInclude Include="include\GLFW\glfw3native.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="FileManager.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="ICleanUp.h" />
-    <ClInclude Include="RenderableObject.h" />
-    <ClInclude Include="Object.h">
-      <Filter>소스 파일</Filter>
+    <ClInclude Include="IInit.h">
+      <Filter>GameEngine\소스</Filter>
     </ClInclude>
-    <ClInclude Include="NonRenderableObject.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="Obj.h" />
-    <ClInclude Include="IUpdate.h" />
-    <ClInclude Include="KeyInput.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="IRender.h">
+      <Filter>GameEngine\소스</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
+      <Filter>GameEngine\소스</Filter>
+    </ClInclude>
+    <ClInclude Include="Bg.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="FileManager.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="ICleanUp.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="IUpdate.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="KeyInput.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="NonRenderableObject.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="Mario.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="RenderableObject.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="Renderer.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="Sphere.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="Time.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="testNonRenderObj.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1182,45 +1223,55 @@
     <None Include="glm\gtx\wrap.inl">
       <Filter>헤더 파일</Filter>
     </None>
-    <None Include="vertex_data.csv">
-      <Filter>소스 파일</Filter>
-    </None>
     <None Include="color_data.csv">
-      <Filter>소스 파일</Filter>
+      <Filter>GameEngine\소스</Filter>
     </None>
-    <None Include="20151687_vs.shader" />
-    <None Include="20151687_fs.shader" />
+    <None Include="vertex_data.csv">
+      <Filter>GameEngine\소스</Filter>
+    </None>
     <None Include="vertex_data2.csv">
-      <Filter>소스 파일</Filter>
+      <Filter>GameEngine\소스</Filter>
+    </None>
+    <None Include="20151687_fs.shader">
+      <Filter>GameEngine\헤더</Filter>
+    </None>
+    <None Include="20151687_vs.shader">
+      <Filter>GameEngine\헤더</Filter>
     </None>
   </ItemGroup>
   <ItemGroup>
+    <ClCompile Include="Bg.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
     <ClCompile Include="FileManager.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Renderer.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="main.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="RenderableObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="NonRenderableObject.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Sphere.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
-    <ClCompile Include="Obj.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>GameEngine\소스</Filter>
     </ClCompile>
     <ClCompile Include="KeyInput.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="main.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="Mario.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="NonRenderableObject.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="RenderableObject.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="Renderer.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="Sphere.cpp">
+      <Filter>GameEngine\소스</Filter>
     </ClCompile>
     <ClCompile Include="Time.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="testNonRenderObj.cpp">
+      <Filter>GameEngine\소스</Filter>
     </ClCompile>
   </ItemGroup>
 </Project>

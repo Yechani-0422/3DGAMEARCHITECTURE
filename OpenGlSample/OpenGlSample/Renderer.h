@@ -6,6 +6,7 @@
 #include <vector>
 
 class RenderableObject;
+class NonRenderableObject;
 
 class Renderer:public ICleanUp
 {
@@ -13,8 +14,9 @@ private:
 	glm::vec3 cameraPos;	
 
 	static Renderer* instance;
-	std::vector< RenderableObject*> objList;
-	void renderObject(RenderableObject* obj);
+
+	std::vector< RenderableObject*> renderObjList;
+	std::vector< NonRenderableObject*> nonrenderObjList;
 public:
 	static Renderer* GetInstance()
 	{
@@ -26,10 +28,10 @@ public:
 		return instance;
 	};
 
-	void addObject(RenderableObject* obj);
-	void update(IUpdate* obj);
+	void addRenderObject(RenderableObject* obj);
+	void addNonRenderObject(NonRenderableObject* obj);
+	void update();
 	void render();
-	void setCameraPos(float x, float y, float z);
 	int init();
 	virtual void shutDown() override;
 
