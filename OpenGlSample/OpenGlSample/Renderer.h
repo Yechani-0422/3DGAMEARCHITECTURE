@@ -30,9 +30,9 @@ public:
 
 	void addRenderObject(RenderableObject* obj);
 	void addNonRenderObject(NonRenderableObject* obj);
-	void update();
-	void render();
 	int init();
+	void update();
+	void render();	
 	virtual void shutDown() override;
 
 	void renderUp();

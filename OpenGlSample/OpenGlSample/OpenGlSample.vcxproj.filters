@@ -780,9 +780,6 @@
     <ClInclude Include="IRender.h">
       <Filter>GameEngine\소스</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>GameEngine\소스</Filter>
-    </ClInclude>
     <ClInclude Include="Bg.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
@@ -817,6 +814,12 @@
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
     <ClInclude Include="testNonRenderObj.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="CompositeObj.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
+    <ClInclude Include="Object.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1271,6 +1274,9 @@
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
     <ClCompile Include="testNonRenderObj.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="CompositeObj.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
   </ItemGroup>

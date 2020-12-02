@@ -1,7 +1,7 @@
 #pragma once
-#include "Object.h"
+#include "CompositeObj.h"
 
-class NonRenderableObject :public Object
+class NonRenderableObject :public CompositeObj
 {
 public:
 	NonRenderableObject();

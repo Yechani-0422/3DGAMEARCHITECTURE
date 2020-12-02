@@ -3,7 +3,22 @@
 
 void Bg::setPos(float x, float y, float z)
 {
-	objPos = glm::vec3(x, y, z);
+	position = glm::vec3(x, y, z);
+}
+
+void Bg::setRot(float speed, float x, float y, float z)
+{
+	rotSpeed = speed;
+	rotVec = glm::vec3(x, y, z);
+}
+
+void Bg::setScale(float x, float y, float z)
+{
+	scaleVec = glm::vec3(x, y, z);
+	if (scaleVec.x != 0.0f || scaleVec.y != 0.0f || scaleVec.z != 0.0f)
+	{
+		Scale = glm::scale(Scale, scaleVec);
+	}
 }
 
 void Bg::setCameraPos(float x, float y, float z)
@@ -65,8 +80,8 @@ void Bg::render()
 
 
 
-	glm::mat4 moveObjPos = glm::mat4(1.0f);
-	moveObjPos = glm::translate(moveObjPos, this->objPos);
+	glm::mat4 movePos = glm::mat4(1.0f);
+	movePos = glm::translate(movePos, this->position);
 
 	glm::mat4 moveCameraPos = glm::mat4(1.0f);
 	moveCameraPos = glm::translate(moveCameraPos, this->cameraPos);
@@ -100,9 +115,8 @@ void Bg::render()
 	glm::mat4 To_World = glm::mat4(1.0f);
 
 	glm::mat4 MVP;
-
 	
-	MVP = Projection * moveCameraPos * View * moveObjPos * To_World;
+	MVP = Projection * moveCameraPos * ComPositScale * ComPositPos * CompositRot  * View * Scale * movePos * Rot * To_World;
 	
 
 
@@ -112,6 +126,17 @@ void Bg::render()
 	glDisableVertexAttribArray(0);
 	glDisableVertexAttribArray(1);
 	glDisableVertexAttribArray(2);
+
+	for (
+		vector<Object*>::const_iterator it = _Table->begin();
+		it != _Table->end();
+		++it
+		)
+	{
+		(*it)->RotMatrix(Rot);
+		(*it)->PosMatrix(movePos);
+		(*it)->PosMatrix(Scale);
+	}
 }
 
 void Bg::update()
@@ -128,4 +153,24 @@ void Bg::shutDown()
 	glDeleteProgram(MatrixID);
 	glDeleteProgram(programID);
 	glDeleteVertexArrays(1, &VertexArrayID);
+}
+
+void Bg::add(Object* addObj)
+{
+	_Table->push_back(addObj);
+}
+
+void Bg::RotMatrix(glm::mat4 _rot)
+{
+	CompositRot = _rot;
+}
+
+void Bg::PosMatrix(glm::mat4 _pos)
+{
+	ComPositPos = _pos;
+}
+
+void Bg::ScaleMatrix(glm::mat4 _scale)
+{
+	ComPositScale = _scale;
 }

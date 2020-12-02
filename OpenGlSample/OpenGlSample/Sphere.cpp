@@ -32,12 +32,12 @@ Sphere::Sphere()
 	glBufferData(GL_ARRAY_BUFFER, normals.size() * sizeof(glm::vec3), &normals[0], GL_STATIC_DRAW);
 
 
-	objPos = glm::vec3(0.0f, 0.0f, 0.0f);
+	position = glm::vec3(0.0f, 0.0f, 0.0f);
 }
 
 void Sphere::setPos(float x, float y, float z)
 {
-	objPos = glm::vec3(x, y, z);
+	position = glm::vec3(x, y, z);
 }
 
 
