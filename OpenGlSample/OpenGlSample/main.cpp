@@ -2,6 +2,7 @@
 #include "Time.h"
 
 #include "Mario.h"
+#include "Dung.h"
 #include "Bg.h"
 
 #include "testNonRenderObj.h"
@@ -14,6 +15,7 @@ int main(void)
 	Mario* mario = new Mario();
 	Mario* mario2 = new Mario();
 	Mario* mario3 = new Mario();
+	Dung* dung = new Dung();
 	Bg* bg = new Bg();
 	testNonRenderObj* testNonRender = new testNonRenderObj();
 
@@ -28,9 +30,13 @@ int main(void)
 	mario2->setRot(1, 0, 0, 1);
 	mario2->setScale(0.5f, 0.5f, 0.5f);
 
-	mario3->setPos(3, 0, 0);
+	mario3->setPos(6, 0, 0);
 	mario3->setRot(1, 0, 0, 1);
 	mario3->setScale(0.5f, 0.5f, 0.5f);
+
+	mario->AddChild(dung);
+	dung->setPos(-3, 0, 0);
+	dung->setScale(2, 2, 2);
 
 
 	while (glfwGetKey(Renderer::GetInstance()->window, GLFW_KEY_ESCAPE) != GLFW_PRESS && glfwWindowShouldClose(Renderer::GetInstance()->window) == 0)

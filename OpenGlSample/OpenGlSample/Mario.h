@@ -1,6 +1,7 @@
 #pragma once
 #include "RenderableObject.h"
 
+class KeyInput;
 
 class Mario :public RenderableObject
 {
@@ -16,6 +17,6 @@ public:
 
 	virtual void AddChild(CompositeObj* addObj)override;
 
-	
+	KeyInput* keyinput;
 };
 

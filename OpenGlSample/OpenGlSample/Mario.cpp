@@ -3,7 +3,7 @@
 #include "KeyInput.h"
 
 
-KeyInput* keyinput;
+//KeyInput* keyinput=new KeyInput();
 
 void Mario::setPos(float x, float y, float z)
 {
@@ -118,7 +118,7 @@ void Mario::render()
 	movePos = glm::translate(movePos, this->position);
 	Transform =  Scale * movePos * Rot * ModelMatrix;
 
-
+	View = ViewMatrix;
 
 	MVP = ProjectionMatrix * moveCameraPos*ViewMatrix *WorldTransform;
 
@@ -144,10 +144,12 @@ void Mario::update()
 	if (Parent)
 	{
 		WorldTransform = Parent->WorldTransform*Transform ;
+		WorldView = Parent->WorldView ;
 	}
 	else
 	{
 		WorldTransform = Transform;
+		WorldView = View;
 	}
 
 	for (

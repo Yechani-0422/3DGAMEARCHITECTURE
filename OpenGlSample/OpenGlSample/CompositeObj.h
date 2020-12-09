@@ -20,6 +20,8 @@ public:
 	CompositeObj* Parent;
 	glm::mat4 WorldTransform;
 	glm::mat4 Transform;
+	glm::mat4 WorldView;
+	glm::mat4 View;
 protected:
 	vector<CompositeObj*>* children;
 	
@@ -35,7 +37,5 @@ protected:
 
 	glm::mat4 ProjectionMatrix;
 	glm::mat4 ViewMatrix;
-	glm::mat4 ModelMatrix;
-
-	
+	glm::mat4 ModelMatrix;	
 };

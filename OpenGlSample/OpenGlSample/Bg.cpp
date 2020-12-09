@@ -123,7 +123,9 @@ void Bg::render()
 	Transform = Scale * movePos * Rot * ModelMatrix;
 
 
-	MVP = ProjectionMatrix * moveCameraPos * ViewMatrix * WorldTransform;
+	View = ViewMatrix;
+
+	MVP = ProjectionMatrix * moveCameraPos * WorldView * WorldTransform;
 
 
 
@@ -148,10 +150,12 @@ void Bg::update()
 	if (Parent)
 	{
 		WorldTransform = Parent->WorldTransform * Transform;
+		WorldView = Parent->WorldView;
 	}
 	else
 	{
 		WorldTransform = Transform;
+		WorldView = View;
 	}
 }
 
@@ -169,5 +173,5 @@ void Bg::shutDown()
 void Bg::AddChild(CompositeObj* addObj)
 {
 	children->push_back(addObj);
-	//addObj->Parent = this;
+	addObj->Parent = this;
 }

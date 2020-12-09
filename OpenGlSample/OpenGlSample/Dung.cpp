@@ -85,13 +85,11 @@ void Dung::render()
 
 
 
-	glm::mat4 movePos = glm::mat4(1.0f);
-	movePos = glm::translate(movePos, this->position);
-
 	glm::mat4 moveCameraPos = glm::mat4(1.0f);
 	moveCameraPos = glm::translate(moveCameraPos, this->cameraPos);
 
-	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+
+	ProjectionMatrix = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
 
 	glm::vec3 direction(
 		cos(0.0f) * sin(3.14f),
@@ -109,26 +107,30 @@ void Dung::render()
 
 	glm::vec3 up = glm::cross(right, direction);
 
-	glm::mat4 View = glm::lookAt(
+	ViewMatrix = glm::lookAt(
 		position,
 		position + direction,
 		up
 	);
 
 
-	glm::mat4 To_World = glm::mat4(1.0f);
+	ModelMatrix = glm::mat4(1.0f);
 
 	glm::mat4 MVP;
-
 
 	if (rotSpeed > 0.0f)
 	{
 		Rot = glm::rotate(Rot, glm::radians(rotSpeed), rotVec);
 	}
 
+	movePos = glm::mat4(1.0f);
+	movePos = glm::translate(movePos, this->position);
+	Transform = Scale * movePos * Rot * ModelMatrix;
 
 
-	MVP = Projection * moveCameraPos * View  * Scale * movePos * Rot * To_World;
+	View = ViewMatrix;
+
+	MVP = ProjectionMatrix * moveCameraPos * WorldView * WorldTransform;
 
 
 	glUniformMatrix4fv(this->MatrixID, 1, GL_FALSE, &MVP[0][0]);
@@ -149,7 +151,16 @@ void Dung::render()
 
 void Dung::update()
 {
-
+	if (Parent)
+	{
+		WorldTransform = Parent->WorldTransform * Transform;
+		WorldView = Parent->WorldView;
+	}
+	else
+	{
+		WorldTransform = Transform;
+		WorldView = View;
+	}
 }
 
 
@@ -166,5 +177,5 @@ void Dung::shutDown()
 void Dung::AddChild(CompositeObj* addObj)
 {
 	children->push_back(addObj);
-	//addObj->Parent = this;
+	addObj->Parent = this;
 }
