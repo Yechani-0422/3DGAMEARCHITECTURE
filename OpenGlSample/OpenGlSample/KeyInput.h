@@ -3,19 +3,7 @@
 
 class KeyInput
 {
-private:
-	static KeyInput* instance;
 public:
-
-	static KeyInput* GetInstance()
-	{
-		if (instance == 0)
-		{
-			instance = new KeyInput();
-		}
-
-		return instance;
-	};
 
 	void computeMatricesFromInputs();
 	glm::mat4 ViewMatrix;

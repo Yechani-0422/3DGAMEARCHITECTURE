@@ -69,7 +69,9 @@
     <Import Project="$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props" Condition="exists('$(UserRootDir)\Microsoft.Cpp.$(Platform).user.props')" Label="LocalAppDataPlatform" />
   </ImportGroup>
   <PropertyGroup Label="UserMacros" />
-  <PropertyGroup />
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
+    <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+  </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
       <WarningLevel>Level3</WarningLevel>
@@ -85,6 +87,7 @@
       <SDLCheck>true</SDLCheck>
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -118,6 +121,7 @@
   <ItemGroup>
     <ClInclude Include="Bg.h" />
     <ClInclude Include="CompositeObj.h" />
+    <ClInclude Include="Dung.h" />
     <ClInclude Include="FileManager.h" />
     <ClInclude Include="glm\common.hpp" />
     <ClInclude Include="glm\detail\compute_common.hpp" />
@@ -527,6 +531,7 @@
   <ItemGroup>
     <ClCompile Include="Bg.cpp" />
     <ClCompile Include="CompositeObj.cpp" />
+    <ClCompile Include="Dung.cpp" />
     <ClCompile Include="FileManager.cpp" />
     <ClCompile Include="KeyInput.cpp" />
     <ClCompile Include="main.cpp" />

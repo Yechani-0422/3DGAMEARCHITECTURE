@@ -1,18 +1,21 @@
-#include "Bg.h"
+#include "Dung.h"
 #include "FileManager.h"
 
-void Bg::setPos(float x, float y, float z)
+
+
+
+void Dung::setPos(float x, float y, float z)
 {
 	position = glm::vec3(x, y, z);
 }
 
-void Bg::setRot(float speed, float x, float y, float z)
+void Dung::setRot(float speed, float x, float y, float z)
 {
 	rotSpeed = speed;
 	rotVec = glm::vec3(x, y, z);
 }
 
-void Bg::setScale(float x, float y, float z)
+void Dung::setScale(float x, float y, float z)
 {
 	scaleVec = glm::vec3(x, y, z);
 	if (scaleVec.x != 0.0f || scaleVec.y != 0.0f || scaleVec.z != 0.0f)
@@ -21,21 +24,23 @@ void Bg::setScale(float x, float y, float z)
 	}
 }
 
-void Bg::setCameraPos(float x, float y, float z)
+void Dung::setCameraPos(float x, float y, float z)
 {
 	cameraPos = glm::vec3(-x, -y, -z);
 }
 
-void Bg::init()
+void Dung::init()
 {
-	FileManager::GetInstance()->loadingObj(this, "bg.obj", "bgdds.DDS", "20151687_vs.shader", "20151687_fs.shader");
-	this->setPos(0, 5, -51);
+	FileManager::GetInstance()->loadingObj(this, "cube.obj", "dung.DDS", "20151687_vs.shader", "20151687_fs.shader");
+	this->setPos(0, 0, 0);
 	this->setCameraPos(0, 0, 0);
+	this->setScale(0, 0, 0);
 }
 
-void Bg::render()
+void Dung::render()
 {
 	glUseProgram(this->programID);
+
 
 	glActiveTexture(GL_TEXTURE0);
 	glBindTexture(GL_TEXTURE_2D, this->Texture);
@@ -80,11 +85,13 @@ void Bg::render()
 
 
 
+	glm::mat4 movePos = glm::mat4(1.0f);
+	movePos = glm::translate(movePos, this->position);
+
 	glm::mat4 moveCameraPos = glm::mat4(1.0f);
 	moveCameraPos = glm::translate(moveCameraPos, this->cameraPos);
 
-
-	ProjectionMatrix = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
+	glm::mat4 Projection = glm::perspective(glm::radians(45.0f), 4.0f / 3.0f, 0.1f, 100.0f);
 
 	glm::vec3 direction(
 		cos(0.0f) * sin(3.14f),
@@ -102,29 +109,26 @@ void Bg::render()
 
 	glm::vec3 up = glm::cross(right, direction);
 
-	ViewMatrix = glm::lookAt(
+	glm::mat4 View = glm::lookAt(
 		position,
 		position + direction,
 		up
 	);
 
 
-	ModelMatrix = glm::mat4(1.0f);
+	glm::mat4 To_World = glm::mat4(1.0f);
 
 	glm::mat4 MVP;
+
 
 	if (rotSpeed > 0.0f)
 	{
 		Rot = glm::rotate(Rot, glm::radians(rotSpeed), rotVec);
 	}
 
-	movePos = glm::mat4(1.0f);
-	movePos = glm::translate(movePos, this->position);
-	Transform = Scale * movePos * Rot * ModelMatrix;
 
 
-	MVP = ProjectionMatrix * moveCameraPos * ViewMatrix * WorldTransform;
-
+	MVP = Projection * moveCameraPos * View  * Scale * movePos * Rot * To_World;
 
 
 	glUniformMatrix4fv(this->MatrixID, 1, GL_FALSE, &MVP[0][0]);
@@ -143,20 +147,13 @@ void Bg::render()
 	}
 }
 
-void Bg::update()
+void Dung::update()
 {
-	if (Parent)
-	{
-		WorldTransform = Parent->WorldTransform * Transform;
-	}
-	else
-	{
-		WorldTransform = Transform;
-	}
+
 }
 
 
-void Bg::shutDown()
+void Dung::shutDown()
 {
 	glDeleteBuffers(1, &vertexbuffer);
 	glDeleteBuffers(1, &uvbuffer);
@@ -166,7 +163,7 @@ void Bg::shutDown()
 	glDeleteVertexArrays(1, &VertexArrayID);
 }
 
-void Bg::AddChild(CompositeObj* addObj)
+void Dung::AddChild(CompositeObj* addObj)
 {
 	children->push_back(addObj);
 	//addObj->Parent = this;

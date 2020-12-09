@@ -822,6 +822,9 @@
     <ClInclude Include="Object.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
+    <ClInclude Include="Dung.h">
+      <Filter>GameEngine\헤더</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <None Include="glm\detail\func_common.inl">
@@ -1277,6 +1280,9 @@
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
     <ClCompile Include="CompositeObj.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="Dung.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
   </ItemGroup>

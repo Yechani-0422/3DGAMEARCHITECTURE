@@ -1,7 +1,6 @@
 #include "KeyInput.h"
 #include "Renderer.h"
 
-KeyInput* KeyInput::instance = 0;
 
 void KeyInput::computeMatricesFromInputs() {
 

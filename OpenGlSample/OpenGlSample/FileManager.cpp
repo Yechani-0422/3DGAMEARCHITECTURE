@@ -340,5 +340,5 @@ void FileManager::loadingObj(RenderableObject* obj, const char* objname, const c
 	glBufferData(GL_ARRAY_BUFFER, obj->normals.size() * sizeof(glm::vec3), &obj->normals[0], GL_STATIC_DRAW);
 
 
-	obj->position = glm::vec3(0.0f, 0.0f, 0.0f);
+	//obj->position = glm::vec3(0.0f, 0.0f, 0.0f);
 }

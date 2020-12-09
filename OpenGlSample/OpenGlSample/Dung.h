@@ -1,7 +1,7 @@
 #pragma once
 #include "RenderableObject.h"
 
-class Bg :public RenderableObject
+class Dung :public RenderableObject
 {
 public:
 	virtual void setPos(float x, float y, float z) override;
@@ -15,4 +15,3 @@ public:
 
 	virtual void AddChild(CompositeObj* addObj)override;
 };
-

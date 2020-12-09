@@ -3,45 +3,43 @@
 
 CompositeObj::CompositeObj()
 {
-	_Table = new vector<Object*>();
-	CompositRot = glm::mat4(1.0f);
-	ComPositPos = glm::mat4(1.0f);
-	ComPositScale = glm::mat4(1.0f);
+	children = new vector<CompositeObj*>();
+	Parent = nullptr;
+	//movePos = glm::mat4(1.0f);
 }
 
 CompositeObj::~CompositeObj()
 {
 	for (
-		vector<Object*>::const_iterator it = _Table->begin();
-		it != _Table->end();
+		vector<CompositeObj*>::const_iterator it = children->begin();
+		it != children->end();
 		++it
 		)
 	{
 		delete (*it);
 	}
 
-	_Table->clear();
+	children->clear();
 
-	delete _Table;
+	delete children;
 }
 
 
-void CompositeObj::add(Object* addObj)
+void CompositeObj::AddChild(CompositeObj* addObj)
 {
-	_Table->push_back(addObj);
+	children->push_back(addObj);
+
+	addObj->Parent = this;
 }
 
-void CompositeObj::RotMatrix(glm::mat4 _rot) 
+void CompositeObj::update()
 {
-	CompositRot = _rot;
-}
-
-void CompositeObj::PosMatrix(glm::mat4 _pos)
-{
-	ComPositPos = _pos;
-}
-
-void CompositeObj::ScaleMatrix(glm::mat4 _scale)
-{
-	ComPositScale = _scale;
+	if (Parent)
+	{
+		WorldTransform = Parent->WorldTransform * Transform;
+	}
+	else
+	{
+		WorldTransform = Transform;
+	}
 }

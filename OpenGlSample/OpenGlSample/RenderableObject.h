@@ -19,15 +19,9 @@ public:
 	virtual void setScale(float x, float y, float z) {};
 	virtual void setCameraPos(float x, float y, float z) {};
 
-	virtual void add(Object* addObj)override {};
-		
-	float rotSpeed;
-	glm::mat4 Scale;
-	glm::vec3 scaleVec;
-	glm::vec3 rotVec;
-	glm::mat4 Rot;
-	glm::vec3 position;
-	glm::vec3 cameraPos;
+	virtual void AddChild(CompositeObj* addObj)override {};
+
+
 	GLuint vertexbuffer;
 	GLuint uvbuffer;
 	GLuint normalbuffer;
