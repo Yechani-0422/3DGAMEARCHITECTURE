@@ -774,55 +774,46 @@
     <ClInclude Include="include\GLFW\glfw3native.h">
       <Filter>헤더 파일</Filter>
     </ClInclude>
-    <ClInclude Include="IInit.h">
-      <Filter>GameEngine\소스</Filter>
-    </ClInclude>
-    <ClInclude Include="IRender.h">
-      <Filter>GameEngine\소스</Filter>
-    </ClInclude>
-    <ClInclude Include="Bg.h">
+    <ClInclude Include="include\CompositeObj.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="FileManager.h">
+    <ClInclude Include="include\FileManager.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="ICleanUp.h">
+    <ClInclude Include="include\ICleanUp.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="IUpdate.h">
+    <ClInclude Include="include\IInit.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="KeyInput.h">
+    <ClInclude Include="include\IRender.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="NonRenderableObject.h">
+    <ClInclude Include="include\IUpdate.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="Mario.h">
+    <ClInclude Include="include\KeyInput.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="RenderableObject.h">
+    <ClInclude Include="include\NonRenderableObject.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="Renderer.h">
+    <ClInclude Include="include\Object.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="Sphere.h">
+    <ClInclude Include="include\RenderableObject.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="Time.h">
+    <ClInclude Include="include\Renderer.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="testNonRenderObj.h">
+    <ClInclude Include="include\Sphere.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="CompositeObj.h">
+    <ClInclude Include="include\testNonRenderObj.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
-    <ClInclude Include="Object.h">
-      <Filter>GameEngine\헤더</Filter>
-    </ClInclude>
-    <ClInclude Include="Dung.h">
+    <ClInclude Include="include\Time.h">
       <Filter>GameEngine\헤더</Filter>
     </ClInclude>
   </ItemGroup>
@@ -1246,43 +1237,49 @@
     </None>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bg.cpp">
+    <ClCompile Include="source\CompositeObj.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="FileManager.cpp">
+    <ClCompile Include="source\FileManager.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="KeyInput.cpp">
+    <ClCompile Include="source\KeyInput.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="main.cpp">
+    <ClCompile Include="source\main_5-2.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="Mario.cpp">
+    <ClCompile Include="source\main_w2.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="NonRenderableObject.cpp">
+    <ClCompile Include="source\main_w3.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="RenderableObject.cpp">
+    <ClCompile Include="source\main_w5.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="Renderer.cpp">
+    <ClCompile Include="source\main_w6.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="Sphere.cpp">
+    <ClCompile Include="source\main_w6_report.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="Time.cpp">
+    <ClCompile Include="source\NonRenderableObject.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="testNonRenderObj.cpp">
+    <ClCompile Include="source\RenderableObject.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="CompositeObj.cpp">
+    <ClCompile Include="source\Renderer.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
-    <ClCompile Include="Dung.cpp">
+    <ClCompile Include="source\Sphere.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="source\testNonRenderObj.cpp">
+      <Filter>GameEngine\소스</Filter>
+    </ClCompile>
+    <ClCompile Include="source\Time.cpp">
       <Filter>GameEngine\소스</Filter>
     </ClCompile>
   </ItemGroup>

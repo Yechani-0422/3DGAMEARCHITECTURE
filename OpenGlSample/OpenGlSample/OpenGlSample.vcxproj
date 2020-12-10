@@ -39,7 +39,7 @@
     <CharacterSet>MultiByte</CharacterSet>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'" Label="Configuration">
-    <ConfigurationType>Application</ConfigurationType>
+    <ConfigurationType>StaticLibrary</ConfigurationType>
     <UseDebugLibraries>true</UseDebugLibraries>
     <PlatformToolset>v142</PlatformToolset>
     <CharacterSet>MultiByte</CharacterSet>
@@ -71,6 +71,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">
     <IntDir>$(Configuration)\$(ProjectName)\</IntDir>
+    <OutDir>$(SolutionDir)bin\$(Configuration)\</OutDir>
   </PropertyGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <ClCompile>
@@ -88,6 +89,7 @@
       <ConformanceMode>true</ConformanceMode>
       <PreprocessorDefinitions>_CRT_SECURE_NO_WARNINGS;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <AdditionalOptions>/FS %(AdditionalOptions)</AdditionalOptions>
+      <PrecompiledHeader>NotUsing</PrecompiledHeader>
     </ClCompile>
   </ItemDefinitionGroup>
   <ItemDefinitionGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
@@ -119,10 +121,6 @@
     </Link>
   </ItemDefinitionGroup>
   <ItemGroup>
-    <ClInclude Include="Bg.h" />
-    <ClInclude Include="CompositeObj.h" />
-    <ClInclude Include="Dung.h" />
-    <ClInclude Include="FileManager.h" />
     <ClInclude Include="glm\common.hpp" />
     <ClInclude Include="glm\detail\compute_common.hpp" />
     <ClInclude Include="glm\detail\compute_vector_relational.hpp" />
@@ -367,25 +365,26 @@
     <ClInclude Include="glm\vec3.hpp" />
     <ClInclude Include="glm\vec4.hpp" />
     <ClInclude Include="glm\vector_relational.hpp" />
-    <ClInclude Include="ICleanUp.h" />
-    <ClInclude Include="IInit.h" />
+    <ClInclude Include="include\CompositeObj.h" />
+    <ClInclude Include="include\FileManager.h" />
     <ClInclude Include="include\GLFW\glfw3.h" />
     <ClInclude Include="include\GLFW\glfw3native.h" />
     <ClInclude Include="include\GL\eglew.h" />
     <ClInclude Include="include\GL\glew.h" />
     <ClInclude Include="include\GL\glxew.h" />
     <ClInclude Include="include\GL\wglew.h" />
-    <ClInclude Include="IRender.h" />
-    <ClInclude Include="IUpdate.h" />
-    <ClInclude Include="KeyInput.h" />
-    <ClInclude Include="NonRenderableObject.h" />
-    <ClInclude Include="Mario.h" />
-    <ClInclude Include="Object.h" />
-    <ClInclude Include="RenderableObject.h" />
-    <ClInclude Include="Renderer.h" />
-    <ClInclude Include="Sphere.h" />
-    <ClInclude Include="testNonRenderObj.h" />
-    <ClInclude Include="Time.h" />
+    <ClInclude Include="include\ICleanUp.h" />
+    <ClInclude Include="include\IInit.h" />
+    <ClInclude Include="include\IRender.h" />
+    <ClInclude Include="include\IUpdate.h" />
+    <ClInclude Include="include\KeyInput.h" />
+    <ClInclude Include="include\NonRenderableObject.h" />
+    <ClInclude Include="include\Object.h" />
+    <ClInclude Include="include\RenderableObject.h" />
+    <ClInclude Include="include\Renderer.h" />
+    <ClInclude Include="include\Sphere.h" />
+    <ClInclude Include="include\testNonRenderObj.h" />
+    <ClInclude Include="include\Time.h" />
   </ItemGroup>
   <ItemGroup>
     <None Include="20151687_fs.shader" />
@@ -529,19 +528,33 @@
     <None Include="vertex_data2.csv" />
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="Bg.cpp" />
-    <ClCompile Include="CompositeObj.cpp" />
-    <ClCompile Include="Dung.cpp" />
-    <ClCompile Include="FileManager.cpp" />
-    <ClCompile Include="KeyInput.cpp" />
-    <ClCompile Include="main.cpp" />
-    <ClCompile Include="NonRenderableObject.cpp" />
-    <ClCompile Include="Mario.cpp" />
-    <ClCompile Include="RenderableObject.cpp" />
-    <ClCompile Include="Renderer.cpp" />
-    <ClCompile Include="Sphere.cpp" />
-    <ClCompile Include="testNonRenderObj.cpp" />
-    <ClCompile Include="Time.cpp" />
+    <ClCompile Include="source\CompositeObj.cpp" />
+    <ClCompile Include="source\FileManager.cpp" />
+    <ClCompile Include="source\KeyInput.cpp" />
+    <ClCompile Include="source\main_5-2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\main_w2.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\main_w3.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\main_w5.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\main_w6.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\main_w6_report.cpp">
+      <ExcludedFromBuild Condition="'$(Configuration)|$(Platform)'=='Debug|x64'">true</ExcludedFromBuild>
+    </ClCompile>
+    <ClCompile Include="source\NonRenderableObject.cpp" />
+    <ClCompile Include="source\RenderableObject.cpp" />
+    <ClCompile Include="source\Renderer.cpp" />
+    <ClCompile Include="source\Sphere.cpp" />
+    <ClCompile Include="source\testNonRenderObj.cpp" />
+    <ClCompile Include="source\Time.cpp" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">
